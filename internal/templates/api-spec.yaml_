@@ -1,0 +1,599 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.1
+  title: Monite API documentation template
+  description: |
+    Intro sentence that defines the business logic defined by this API.
+
+    *For example*:
+    You use this endpoint to log an authenticated user in or out of Monite.
+
+    ## What is a user?
+    In Monite, a user represents a person or legal entity. Users may have one of the following roles:
+
+    - **Administrator** - explain what an administrator can do
+    - **SomethingElse** - explain what this role can do
+    - **StandardUser** - explain what this role can do
+
+    ## The user workflow
+
+    Each user can login, update their authentication token and logout of monite. The following code
+    example shows how to implement this workflow:
+
+    ````java
+        A Code example.
+        Best would be to have one for each of the top languages
+    ````
+
+
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Monite
+    email: info@monite.com
+    url: https://monite.com/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://api.monite.com/v1/users
+paths:
+  "/v1/auth":
+    get:
+      tags:
+        - v1 Api Users
+      summary: Check that the current user is authenticated on Monite
+      description: |
+        You use this entpoint to check that a specific user has been registered with Monite
+        and has rights to login to the system.
+        When a user logs into Monite, the information supplied in this call defines the role
+        this user has and the actions that they can complete.
+      operationId: check_auth_status_v1_auth_get
+      parameters:
+        - description: A full explanation of the purpose of the parameter.
+          required: false
+          schema:
+            title: Accept-Language
+            type: string
+            description: A full explanation of the purpose of the parameter.
+          name: Accept-Language
+          in: header
+        - description: A full explanation of the purpose of the parameter.
+          required: false
+          schema:
+            title: X-Accept-Language
+            type: string
+            description: A full explanation of the purpose of the parameter.
+          name: X-Accept-Language
+          in: header
+      responses:
+        '200':
+          description: Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request, the response will contain an entity describing or containing the result of the action.
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: The server cannot or will not process the request due to an apparent client error (e.g., malformed request syntax, size too large, invalid request message framing, or deceptive request routing).
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+        '401':
+          description: Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+        '403':
+          description: The request contained valid data and was understood by the server, but the server is refusing action. This may be due to the user not having the necessary permissions for a resource or needing an account of some sort, or attempting a prohibited action (e.g. creating a duplicate record where only one is allowed). This code is also typically used if the request provided authentication by answering the WWW-Authenticate header field challenge, but the server did not accept that authentication. The request should not be repeated.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+        '409':
+          description: Indicates that the request could not be processed because of conflict in the current state of the resource, such as an edit conflict between multiple simultaneous updates.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+        '416':
+          description: The client has asked for a portion of the file (byte serving), but the server cannot supply that portion. For example, if the client asked for a part of the file that lies beyond the end of the file.[48] Called "Requested Range Not Satisfiable" previously.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+        '422':
+          description: The request was well-formed but was unable to be followed due to semantic errors.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+        '500':
+          description: A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorSchemaResponse"
+      security:
+        - APIKeyHeader: []
+
+components:
+  schemas:
+    AddCustomTemplateSchema:
+      title: AddCustomTemplateSchema
+      required:
+        - language_code
+        - subject_template
+        - body_template
+        - template_name
+      type: object
+      properties:
+        language_code:
+          title: Language Code
+          type: string
+          description: Lowercase iso code of language
+        subject_template:
+          title: Subject Template
+          type: string
+          description: Jinja2 compatible string with email subject
+        body_template:
+          title: Body Template
+          type: string
+          description: Jinja2 compatible string with email body
+        template_name:
+          title: Template Name
+          type: string
+          description: One of pre-defined names of emails. Should be validated with
+            enum
+    AuthSchema:
+      title: AuthSchema
+      required:
+        - user_id
+        - secret
+      type: object
+      properties:
+        user_id:
+          title: User Id
+          type: string
+          format: uuid4
+        secret:
+          title: Secret
+          type: string
+    AuthSchemaResponse:
+      title: AuthSchemaResponse
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          "$ref": "#/components/schemas/TokenSchemaResponse"
+    BaseRequestCustomTemplateSchema:
+      title: BaseRequestCustomTemplateSchema
+      required:
+        - language_code
+        - subject_template
+        - body_template
+      type: object
+      properties:
+        language_code:
+          title: Language Code
+          type: string
+          description: Lowercase iso code of language
+        subject_template:
+          title: Subject Template
+          type: string
+          description: Jinja2 compatible string with email subject
+        body_template:
+          title: Body Template
+          type: string
+          description: Jinja2 compatible string with email body
+    CreateEntityRequest:
+      title: CreateEntityRequest
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Entity name
+        type:
+          allOf:
+            - "$ref": "#/components/schemas/EntityTypeEnum"
+          description: enum(person|business)
+          default: business
+        country_code:
+          title: Country Code
+          type: string
+          description: ISO 3166 2-symbols code, mandatory, DE by default
+          default: DE
+        internal_id:
+          title: Internal Id
+          type: string
+          description: optional, string, internal 3rd party user or company ID
+    CreateEntityResponse:
+      title: CreateEntityResponse
+      required:
+        - id
+        - name
+        - type
+        - country_code
+        - internal_id
+        - status
+        - created_at
+        - updated_at
+        - mailboxes
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: UUID entity ID
+          format: uuid4
+        name:
+          title: Name
+          type: string
+          description: Entity name
+        type:
+          allOf:
+            - "$ref": "#/components/schemas/EntityTypeEnum"
+          description: enum(person|business)
+        country_code:
+          title: Country Code
+          type: string
+          description: ISO 3166 2-symbols code DE
+        internal_id:
+          title: Internal Id
+          type: string
+          description: optional STR
+        status:
+          allOf:
+            - "$ref": "#/components/schemas/StatusEnum"
+          description: record status, 'active' by default
+        created_at:
+          title: Created At
+          type: string
+          description: UTC datetime
+          format: date-time
+        updated_at:
+          title: Updated At
+          type: string
+          description: UTC datetime
+          format: date-time
+        mailboxes:
+          title: Mailboxes
+          type: array
+          items:
+            "$ref": "#/components/schemas/MailboxResponse"
+    CreateTokenResponse:
+      title: CreateTokenResponse
+      required:
+        - token
+        - expiration_in
+      type: object
+      properties:
+        token:
+          title: Token
+          type: string
+          description: Bearer token for further API calls
+        expiration_in:
+          title: Expiration In
+          type: string
+          description: TC datetime or INT with seconds. Expiration timeout should
+            be configured from configuration files
+          format: date-time
+    CursorFields:
+      title: CursorFields
+      enum:
+        - id
+        - name
+      type: string
+      description: An enumeration.
+    CustomTemplateDataSchema:
+      title: CustomTemplateDataSchema
+      required:
+        - id
+        - template_name
+        - language_code
+        - subject_template
+        - body_template
+        - created_at
+        - updated_at
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: UUID of email template
+          format: uuid4
+        template_name:
+          title: Template Name
+          type: string
+          description: Name of the template
+        language_code:
+          title: Language Code
+          type: string
+          description: ISO language code
+        subject_template:
+          title: Subject Template
+          type: string
+          description: Jinja2 compatible email subject template
+        body_template:
+          title: Body Template
+          type: string
+          description: Jinja2 compatible email body template
+        created_at:
+          title: Created At
+          type: string
+          description: Template created date and time
+          format: date-time
+        updated_at:
+          title: Updated At
+          type: string
+          description: Template updated date and time
+          format: date-time
+    DomainRequest:
+      title: DomainRequest
+      required:
+        - domain
+      type: object
+      properties:
+        domain:
+          title: Domain
+          type: string
+        provider:
+          allOf:
+            - "$ref": "#/components/schemas/EmailServiceProviderEnum"
+          description: Email service provider
+    DomainResponse:
+      title: DomainResponse
+      required:
+        - id
+        - api_user_id
+        - domain
+        - status
+        - provider
+        - dns_records
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Entry ID
+        api_user_id:
+          title: Api User Id
+          type: string
+          description: UUID of the API ApiUser
+          format: uuid4
+        domain:
+          title: Domain
+          type: string
+        status:
+          title: Status
+          type: string
+        provider:
+          title: Provider
+          type: string
+        dns_records:
+          title: Dns Records
+          type: object
+    EmailServiceProviderEnum:
+      title: EmailServiceProviderEnum
+      enum:
+        - mailgun
+      type: string
+      description: An enumeration.
+    EntityTypeEnum:
+      title: EntityTypeEnum
+      enum:
+        - person
+        - business
+      type: string
+      description: An enumeration.
+    ErrorSchema:
+      title: ErrorSchema
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          title: Message
+          type: string
+    ErrorSchemaResponse:
+      title: ErrorSchemaResponse
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          "$ref": "#/components/schemas/ErrorSchema"
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            "$ref": "#/components/schemas/ValidationError"
+    MailboxResponse:
+      title: MailboxResponse
+      required:
+        - id
+        - entity_id
+        - status
+        - related_object_type
+        - mailbox_name
+        - mailbox_full_address
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Mailbox ID
+        entity_id:
+          title: Entity Id
+          type: string
+          description: UUID entity ID
+          format: uuid4
+        status:
+          title: Status
+          type: string
+        related_object_type:
+          title: Related Object Type
+          type: string
+        mailbox_name:
+          title: Mailbox Name
+          type: string
+        mailbox_full_address:
+          title: Mailbox Full Address
+          type: string
+        belongs_to_mailbox_domain_id:
+          title: Belongs To Mailbox Domain Id
+          type: integer
+    MessageResponse:
+      title: MessageResponse
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          title: Message
+          type: string
+    OrderEnum:
+      title: OrderEnum
+      enum:
+        - asc
+        - desc
+      type: string
+      description: An enumeration.
+    PaginationResponse:
+      title: PaginationResponse
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          title: Data
+          type: array
+          items:
+            "$ref": "#/components/schemas/CreateEntityResponse"
+          description: array of records
+        prev_page:
+          title: Prev Page
+          type: string
+          description: optional querystring with pagination parameters, null if there
+            is no page
+        next_page:
+          title: Next Page
+          type: string
+          description: optional querystring with pagination parameters, null if there
+            is no page
+    StatusEnum:
+      title: StatusEnum
+      enum:
+        - active
+        - deleted
+      type: string
+      description: An enumeration.
+    SystemTemplateDataSchema:
+      title: SystemTemplateDataSchema
+      required:
+        - template_name
+        - available_templates
+      type: object
+      properties:
+        template_name:
+          title: Template Name
+          type: string
+          description: Name of the template
+        available_templates:
+          title: Available Templates
+          type: array
+          items:
+            "$ref": "#/components/schemas/TemplateDataSchema"
+          description: Array of templates
+    TemplateDataSchema:
+      title: TemplateDataSchema
+      required:
+        - language
+        - subject_template
+        - body_template
+      type: object
+      properties:
+        language:
+          title: Language
+          type: string
+          description: Lowercase language code [en, de]
+        subject_template:
+          title: Subject Template
+          type: string
+          description: Jinja2 compatible email subject template
+        body_template:
+          title: Body Template
+          type: string
+          description: Jinja2 compatible email body template
+    TokenSchemaResponse:
+      title: TokenSchemaResponse
+      required:
+        - token
+        - type
+      type: object
+      properties:
+        token:
+          title: Token
+          type: string
+        type:
+          title: Type
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    VerifyResponse:
+      title: VerifyResponse
+      required:
+        - id
+        - api_user_id
+        - domain
+        - status
+        - provider
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Entry ID
+        api_user_id:
+          title: Api User Id
+          type: string
+          description: UUID of the API ApiUser
+          format: uuid4
+        domain:
+          title: Domain
+          type: string
+        status:
+          title: Status
+          type: string
+        provider:
+          title: Provider
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: x-api-key

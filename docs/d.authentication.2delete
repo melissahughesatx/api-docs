@@ -1,0 +1,102 @@
+
+# Security and authentication with Monite
+
+Monite supplies the following access modes.
+
+- Client - a legal entity is our API client. Each client uses Monite APIs in order to provide additional functionality to its customers and the customers employees. A customer is referred to as an Entity and the employee as an Entity-user. Software engineers for the Client call Monite API top generate entity access tokens. These tokens are service tokens, they allow to customize and configure API settings.
+
+- Entity - An entity is the representation of the customers a client. Each entity is able to issues entity-level tokens and these tokens are bound to each entity and entity-user. One entity cannot acces to data that belongs to another entity.
+
+- Entity-user - these access tokens grant access to the employees who work for an entity. 
+
+The differences between access modes is:
+
+- API user - reserved for engineers of API clients. It's not possible to trigger any business logic calls from this level
+
+- Entity-level - 'root access' for entities. On this level it's possible to get access to all types of records that are stored in our system and that belong to customers of our customers. We are not checking access permissions on this level!
+
+- Entity-user-level - is an optional level for entity employees.  This security level designed for those API clients who don't want to build access control tools on their side and want to use our solutions.  We create customizable roles and permissions on this level and we are checking access policies when making API calls.
+
+## How it works
+
+The following diagram shows how the different security layers interact with Monite.
+
+TBD
+
+This section shows you how to implement the different modes into your app. 
+
+## What you need
+
+To successfully understand and complete this task you must have the following:
+
+- A valid Monite account.
+- A monite key/value pair.
+- Good knowledge of [Multi-factor authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication).
+
+
+## Implement Monite security and authentication 
+
+Step-up authentication implementation involves changes to components in your app and security infrastructure. This section shows you how to:
+
+- [Implement Client security](link to module1)
+- [Implement Entity security](link to module2)
+- [Implement Entity-user security](link to module2)
+
+
+### Implement Client security
+
+TBD
+
+To add Client security to your app:
+
+1. Do this.
+1. Do that:
+    1. Sometimes you need substeps.
+    1. Always at least 2 substeps.
+1. Do something else.
+
+### Implement Entity security
+
+TBD
+
+To add entity authentication to your security infrastructure:
+
+1. Do this.
+1. Do that:
+    1. Sometimes you need substeps.
+    1. Always at least 2 substeps.
+1. Do something else.
+
+### Implement Entity-user security
+
+
+TBD
+
+To add Entity-user to your security infrastructure:
+
+1. Do this.
+1. Do that:
+   1. Sometimes you need substeps.
+   1. Always at least 2 substeps.
+1. Do something else.
+
+
+## Test security in your app
+
+To ensure that you have implemented &lt;A rewording of the page title&gt; correctly:
+
+1. Do this.
+1. Do that:
+    1. Sometimes you need substeps.
+    1. Always at least 2 substeps.
+1. Do something else.
+
+
+## Reference
+
+TBD
+
+You use the following to configure or develop Monite security in your app:
+
+
+
