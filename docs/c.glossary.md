@@ -18,3 +18,4 @@ Learn the significance of terminology commonly used in the documentation.
 #### End-user
  - An end-user of partner's application connected to Monite API. This is usually the entity's employee.
  - The following terms might be used as synonyms and help your understanding: entity-user.
+ 
