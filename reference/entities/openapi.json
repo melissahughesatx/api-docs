@@ -3522,10 +3522,10 @@
         "x-internal": true
       }
     },
-    "/v1/incoming_bills": {
+    "/v1/Payables": {
       "get": {
         "tags": [
-          "v1 Incoming bills"
+          "v1 Payable"
         ],
         "summary": "Get Bills",
         "description": "Returns the list of uploaded incoming bills",
@@ -3737,7 +3737,7 @@
       },
       "post": {
         "tags": [
-          "v1 Incoming bills"
+          "v1 Payable"
         ],
         "summary": "Upload New Bill",
         "operationId": "upload_new_bill_v1_incoming_bills_post",
@@ -3910,10 +3910,10 @@
         "description": "Uploads image of incoming bill"
       }
     },
-    "/v1/incoming_bills/{bill_id}": {
+    "/v1/payables/{bill_id}": {
       "get": {
         "tags": [
-          "v1 Incoming bills"
+          "v1 Payable"
         ],
         "summary": "Get Bill By Id",
         "operationId": "get_bill_by_id_v1_incoming_bills__bill_id__get",
@@ -4042,7 +4042,7 @@
       },
       "put": {
         "tags": [
-          "v1 Incoming bills"
+          "v1 Payable"
         ],
         "summary": "Update Bill By Id",
         "operationId": "update_bill_by_id_v1_incoming_bills__bill_id__put",
@@ -4226,7 +4226,7 @@
       },
       "delete": {
         "tags": [
-          "v1 Incoming bills"
+          "v1 Payable"
         ],
         "summary": "Delete Bill",
         "operationId": "delete_bill_v1_incoming_bills__bill_id__delete",
