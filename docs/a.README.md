@@ -36,7 +36,7 @@ Monite is a SAAS that your backend securely sends and retrieves financial data t
 
 ![](../assets/images/monite-architecture-overview.png)
 
-The microservices in Monite are:
+The business logic objects in Monite are:
 
 - [/v1/incoming_bills](https://monite.stoplight.io/docs/api-docs/b3A6MjU2NTk0MjE-upload-new-bill)
 
