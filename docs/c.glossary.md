@@ -20,5 +20,5 @@ Learn the significance of terminology commonly used in the documentation.
  - A process of matching financial documents (e.g. payables or receivables) with bank and cash transactions.
 #### End-user
  - An end-user of partner's application connected to Monite API. In the majority of cases this resembles an entity's employee.
- - The following terms might be used as synonyms and help your understanding: entity-user.
+ - The following terms might be used as synonyms and help your understanding: entity-user. 
  
