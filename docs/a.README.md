@@ -56,4 +56,3 @@ You now know what Monite can do for you, and how it works. It's time to integrat
 * [Get started with the Monite API](b.get-started.md)
 * [Implement authentication using Monite API](d.authentication.md)
 * TBD
-
