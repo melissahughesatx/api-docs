@@ -3,9 +3,11 @@
 
 Supercharge your product by embedding multiple finance automation features with a single API. 
 
-How many times have you heard the words, *I love doing invoicing, paperwork is the high point of my day*? But the most important part of any business is to easily get paid. Make it easy for your clients to spend less time on accounting and paperwork and your satisfied customers increase your revenue.
+How many times have you heard the words, *I love doing invoicing, paperwork is the high point of my day*? In fact the priority of any business is to easily get paid as well as to pay suppliers in time. Make it easy for your clients to spend less time on accounting and paperwork and your satisfied customers increase your revenue.
 
-The number of finance apps is increasing exponentially. Creating software connectors for the main financial services is a large and expensive piece of work. Monite has done the heavy lifting for you. You use the Monite API to easily add invoicing and finance data from multiple sources into your app with a few REST calls. Light development work for you, happy customers, increased revenue, not bad. 
+The number of finance apps is increasing exponentially. Creating software connectors for the main financial services is a large and expensive piece of work. Monite has done the heavy lifting for you. You use the Monite API to easily add invoicing and finance data from multiple sources into your app with a few REST calls. 
+
+Light development work for you, happy customers, increased revenue, not bad. 
 
 ## Monite features  
 
@@ -13,7 +15,7 @@ Ok, you have read the marketing words, but what are we really offering? Monite s
 
 - **One place for everything** 
 
-  Forward all upcoming bills to a single email address or upload them directly to Monite with a single REST call. Make another call and you see the bill status.
+  Forward all upcoming payables to a single email address or upload them directly to Monite with a single REST call. Make another call and you see the document status.
 
 - **Review and approve payables** 
   - Review - invoices are read automatically from most formats. End users easily review and add descriptions to all invoices in the system. 
@@ -38,7 +40,7 @@ The microservices in Monite are:
 
 - [/v1/incoming_bills](https://monite.stoplight.io/docs/api-docs/b3A6MjU2NTk0MjE-upload-new-bill)
 
-  Manage all your incoming invoices in a single endpoint. Upload, update, retrieve and delete invoices singly or in batches. 
+  Manage all your payables in a single endpoint. Upload, update, retrieve and delete invoices singly or in batches. 
 
 - /v1/TBD
 
