@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "type": "item",
+      "title": "Get started with Monite API",
+      "uri": "docs/b.get-started.md"
+    },
+    {
+      "type": "item",
+      "title": "Security and authentication with Monite",
+      "uri": "docs/d.authentication.md"
+    },
+    {
+      "type": "item",
+      "title": "Business use case",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "Monite API Glossary",
+      "uri": "docs/w.glossary.md"
+    },
+    {
+      "type": "item",
+      "title": "HTTP Methods, Headers, and Statuses",
+      "uri": "docs/x.methods-headers-statuses.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "openapi.json",
+      "uri": "reference/entities/openapi.json"
+    }
+  ]
+}
