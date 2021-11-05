@@ -17,6 +17,11 @@
     },
     {
       "type": "item",
+      "title": "Payable Management",
+      "uri": "docs/g.payable-management.md"
+    },    
+    {
+      "type": "item",
       "title": "Monite API Glossary",
       "uri": "docs/w.glossary.md"
     },
