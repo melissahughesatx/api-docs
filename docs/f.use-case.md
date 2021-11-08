@@ -21,7 +21,7 @@ To successfully understand and complete this task you must have the following:
 
 - A valid Monite account.
 - A monite key/value pair.
-- Good knowledge of https://en.wikipedia.org/wiki/Multi-factor_authentication[Multi-factor authentication].
+- Good knowledge of [Multi-factor authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication).
 
 ## Setup 
 

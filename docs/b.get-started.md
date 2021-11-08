@@ -5,7 +5,7 @@ Monite offers the following development solutions to integrate our functionality
 - White label - get a branded app up and running in 24 hours
 - Embedded - integrate Monite functionality into your app in 2-4 weeks
 
-This section shows you how to create the [authentication tokens](authentication.md) and entities that are the first step for all development solutions. 
+This section shows you how to create the [authentication tokens](d.authentication.md) and entities that are the first step for all development solutions. 
 
 ## How it works
 
