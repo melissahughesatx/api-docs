@@ -27,7 +27,7 @@
     },
     {
       "type": "item",
-      "title": "HTTP Methods, Headers, and Statuses ",
+      "title": "HTTP Methods, Headers, and Statuses",
       "uri": "docs/x.methods-headers-statuses.md"
     },
     {
@@ -36,7 +36,7 @@
     },
     {
       "type": "item",
-      "title": "openapi.json",
+      "title": "API for Entities",
       "uri": "reference/entities/openapi.json"
     }
   ]
