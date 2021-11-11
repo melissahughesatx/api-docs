@@ -45,12 +45,7 @@
     },
     {
       "type": "item",
-      "title": "Processing",
-      "uri": "docs/f.use-case.md"
-    },
-    {
-      "type": "item",
-      "title": "Payments",
+      "title": "Payable Management",
       "uri": "docs/g.payable-management.md"
     },
     {
