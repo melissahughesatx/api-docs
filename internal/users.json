@@ -1,0 +1,3232 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Users",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "/users"
+    }
+  ],
+
+  "paths": {
+    "/v1/auth": {
+      "get": {
+        "tags": [
+          "v1 Api Users"
+        ],
+        "summary": "Check Auth Status",
+        "description": "Check authentication status",
+        "operationId": "check_auth_status_v1_auth_get",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Api Users"
+        ],
+        "summary": "Obtain New Token",
+        "description": "Obtain a bearer token for further API requests",
+        "operationId": "obtain_new_token_v1_auth_post",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthSchemaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "v1 Api Users"
+        ],
+        "summary": "Log Out",
+        "description": "Discard access token. API call accepts Access header and discards the access for the\ntoken passed in that header. You can say we are talking about log-out feature",
+        "operationId": "log_out_v1_auth_delete",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+
+    "/v1/entities": {
+      "get": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Get Entities",
+        "description": "Get list of entities",
+        "operationId": "get_entities_v1_entities_get",
+        "parameters": [
+          {
+            "description": "Allowed cursor fields",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/CursorFields"
+                }
+              ],
+              "description": "Allowed cursor fields"
+            },
+            "name": "cursor_field",
+            "in": "query"
+          },
+          {
+            "description": "Order by",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderEnum"
+                }
+              ],
+              "description": "Order by",
+              "default": "asc"
+            },
+            "name": "order",
+            "in": "query"
+          },
+          {
+            "description": "Max is 100",
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "type": "integer",
+              "description": "Max is 100",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Create New Entity",
+        "description": "Add new entity",
+        "operationId": "create_new_entity_v1_entities_post",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEntityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEntityResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/entities/{entity_id}": {
+      "get": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Get Entity By Id",
+        "description": "Get entity by id",
+        "operationId": "get_entity_by_id_v1_entities__entity_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "entity_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEntityResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Update Entity",
+        "description": "Update entity fields by id",
+        "operationId": "update_entity_v1_entities__entity_id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "entity_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEntityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEntityResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Delete Entity",
+        "description": "Delete entity by id",
+        "operationId": "delete_entity_v1_entities__entity_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "entity_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/entities/{entity_id}/access": {
+      "get": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Check Auth Status",
+        "description": "Check authentication token status",
+        "operationId": "check_auth_status_v1_entities__entity_id__access_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "entity_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Entities"
+        ],
+        "summary": "Obtain New Token",
+        "description": "Obtain a bearer token for further API requests",
+        "operationId": "obtain_new_token_v1_entities__entity_id__access_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Entity Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "entity_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/emails/templates/custom": {
+      "get": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Get All",
+        "description": "Get all custom templates",
+        "operationId": "get_all_v1_emails_templates_custom_get",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get All V1 Emails Templates Custom Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomTemplateDataSchema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Create",
+        "description": "Create custom template",
+        "operationId": "create_v1_emails_templates_custom_post",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCustomTemplateSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/emails/templates/custom/{template_id}": {
+      "get": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Get",
+        "description": "Get custom template by ID",
+        "operationId": "get_v1_emails_templates_custom__template_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Template Id",
+              "type": "integer"
+            },
+            "name": "template_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomTemplateDataSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Update",
+        "description": "Update custom template by ID",
+        "operationId": "update_v1_emails_templates_custom__template_id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Template Id",
+              "type": "integer"
+            },
+            "name": "template_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaseRequestCustomTemplateSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Delete",
+        "description": "Delete custom template bt ID",
+        "operationId": "delete_v1_emails_templates_custom__template_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Template Id",
+              "type": "integer"
+            },
+            "name": "template_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Delete V1 Emails Templates Custom  Template Id  Delete",
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/emails/templates/system": {
+      "get": {
+        "tags": [
+          "v1 Mailer"
+        ],
+        "summary": "Get All System Templates",
+        "description": "Get all system templates",
+        "operationId": "get_all_system_templates_v1_emails_templates_system_get",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get All System Templates V1 Emails Templates System Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SystemTemplateDataSchema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mailboxes/domain": {
+      "get": {
+        "tags": [
+          "v1 Mailboxes (domain)"
+        ],
+        "summary": "Get Domains",
+        "operationId": "get_domains_v1_mailboxes_domain_get",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Mailboxes (domain)"
+        ],
+        "summary": "Create Domain",
+        "operationId": "create_domain_v1_mailboxes_domain_post",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomainRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/mailboxes/domain/verify/{domain}": {
+      "put": {
+        "tags": [
+          "v1 Mailboxes (domain)"
+        ],
+        "summary": "Verify Domain",
+        "operationId": "verify_domain_v1_mailboxes_domain_verify__domain__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Domain",
+              "type": "string"
+            },
+            "name": "domain",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/mailboxes/domain/delete/{domain}": {
+      "delete": {
+        "tags": [
+          "v1 Mailboxes (domain)"
+        ],
+        "summary": "Delete Domain",
+        "operationId": "delete_domain_v1_mailboxes_domain_delete__domain__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Domain",
+              "type": "string"
+            },
+            "name": "domain",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddCustomTemplateSchema": {
+        "title": "AddCustomTemplateSchema",
+        "required": [
+          "language_code",
+          "subject_template",
+          "body_template",
+          "template_name"
+        ],
+        "type": "object",
+        "properties": {
+          "language_code": {
+            "title": "Language Code",
+            "type": "string",
+            "description": "Lowercase iso code of language"
+          },
+          "subject_template": {
+            "title": "Subject Template",
+            "type": "string",
+            "description": "Jinja2 compatible string with email subject"
+          },
+          "body_template": {
+            "title": "Body Template",
+            "type": "string",
+            "description": "Jinja2 compatible string with email body"
+          },
+          "template_name": {
+            "title": "Template Name",
+            "type": "string",
+            "description": "One of pre-defined names of emails. Should be validated with enum"
+          }
+        }
+      },
+      "AuthSchema": {
+        "title": "AuthSchema",
+        "required": [
+          "user_id",
+          "secret"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "title": "User Id",
+            "type": "string",
+            "format": "uuid4"
+          },
+          "secret": {
+            "title": "Secret",
+            "type": "string"
+          }
+        }
+      },
+      "AuthSchemaResponse": {
+        "title": "AuthSchemaResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TokenSchemaResponse"
+          }
+        }
+      },
+      "BaseRequestCustomTemplateSchema": {
+        "title": "BaseRequestCustomTemplateSchema",
+        "required": [
+          "language_code",
+          "subject_template",
+          "body_template"
+        ],
+        "type": "object",
+        "properties": {
+          "language_code": {
+            "title": "Language Code",
+            "type": "string",
+            "description": "Lowercase iso code of language"
+          },
+          "subject_template": {
+            "title": "Subject Template",
+            "type": "string",
+            "description": "Jinja2 compatible string with email subject"
+          },
+          "body_template": {
+            "title": "Body Template",
+            "type": "string",
+            "description": "Jinja2 compatible string with email body"
+          }
+        }
+      },
+      "CreateEntityRequest": {
+        "title": "CreateEntityRequest",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "description": "Entity name"
+          },
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EntityTypeEnum"
+              }
+            ],
+            "description": "enum(person|business)",
+            "default": "business"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string",
+            "description": "ISO 3166 2-symbols code, mandatory, DE by default",
+            "default": "DE"
+          },
+          "internal_id": {
+            "title": "Internal Id",
+            "type": "string",
+            "description": "optional, string, internal 3rd party user or company ID"
+          }
+        }
+      },
+      "CreateEntityResponse": {
+        "title": "CreateEntityResponse",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "country_code",
+          "internal_id",
+          "status",
+          "created_at",
+          "updated_at",
+          "mailboxes"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "description": "UUID entity ID",
+            "format": "uuid4"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "description": "Entity name"
+          },
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EntityTypeEnum"
+              }
+            ],
+            "description": "enum(person|business)"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string",
+            "description": "ISO 3166 2-symbols code DE"
+          },
+          "internal_id": {
+            "title": "Internal Id",
+            "type": "string",
+            "description": "optional STR"
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StatusEnum"
+              }
+            ],
+            "description": "record status, 'active' by default"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "description": "UTC datetime",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "description": "UTC datetime",
+            "format": "date-time"
+          },
+          "mailboxes": {
+            "title": "Mailboxes",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MailboxResponse"
+            }
+          }
+        }
+      },
+      "CreateTokenResponse": {
+        "title": "CreateTokenResponse",
+        "required": [
+          "token",
+          "expiration_in"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "title": "Token",
+            "type": "string",
+            "description": "Bearer token for further API calls"
+          },
+          "expiration_in": {
+            "title": "Expiration In",
+            "type": "string",
+            "description": "TC datetime or INT with seconds. Expiration timeout should be configured from configuration files",
+            "format": "date-time"
+          }
+        }
+      },
+      "CursorFields": {
+        "title": "CursorFields",
+        "enum": [
+          "id",
+          "name"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "CustomTemplateDataSchema": {
+        "title": "CustomTemplateDataSchema",
+        "required": [
+          "id",
+          "template_name",
+          "language_code",
+          "subject_template",
+          "body_template",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "description": "UUID of email template",
+            "format": "uuid4"
+          },
+          "template_name": {
+            "title": "Template Name",
+            "type": "string",
+            "description": "Name of the template"
+          },
+          "language_code": {
+            "title": "Language Code",
+            "type": "string",
+            "description": "ISO language code"
+          },
+          "subject_template": {
+            "title": "Subject Template",
+            "type": "string",
+            "description": "Jinja2 compatible email subject template"
+          },
+          "body_template": {
+            "title": "Body Template",
+            "type": "string",
+            "description": "Jinja2 compatible email body template"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "description": "Template created date and time",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "description": "Template updated date and time",
+            "format": "date-time"
+          }
+        }
+      },
+      "DomainRequest": {
+        "title": "DomainRequest",
+        "required": [
+          "domain"
+        ],
+        "type": "object",
+        "properties": {
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          },
+          "provider": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmailServiceProviderEnum"
+              }
+            ],
+            "description": "Email service provider"
+          }
+        }
+      },
+      "DomainResponse": {
+        "title": "DomainResponse",
+        "required": [
+          "id",
+          "api_user_id",
+          "domain",
+          "status",
+          "provider",
+          "dns_records"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer",
+            "description": "Entry ID"
+          },
+          "api_user_id": {
+            "title": "Api User Id",
+            "type": "string",
+            "description": "UUID of the API ApiUser",
+            "format": "uuid4"
+          },
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "dns_records": {
+            "title": "Dns Records",
+            "type": "object"
+          }
+        }
+      },
+      "EmailServiceProviderEnum": {
+        "title": "EmailServiceProviderEnum",
+        "enum": [
+          "mailgun"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "EntityTypeEnum": {
+        "title": "EntityTypeEnum",
+        "enum": [
+          "person",
+          "business"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "ErrorSchema": {
+        "title": "ErrorSchema",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        }
+      },
+      "ErrorSchemaResponse": {
+        "title": "ErrorSchemaResponse",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorSchema"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "MailboxResponse": {
+        "title": "MailboxResponse",
+        "required": [
+          "id",
+          "entity_id",
+          "status",
+          "related_object_type",
+          "mailbox_name",
+          "mailbox_full_address"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer",
+            "description": "Mailbox ID"
+          },
+          "entity_id": {
+            "title": "Entity Id",
+            "type": "string",
+            "description": "UUID entity ID",
+            "format": "uuid4"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "related_object_type": {
+            "title": "Related Object Type",
+            "type": "string"
+          },
+          "mailbox_name": {
+            "title": "Mailbox Name",
+            "type": "string"
+          },
+          "mailbox_full_address": {
+            "title": "Mailbox Full Address",
+            "type": "string"
+          },
+          "belongs_to_mailbox_domain_id": {
+            "title": "Belongs To Mailbox Domain Id",
+            "type": "integer"
+          }
+        }
+      },
+      "MessageResponse": {
+        "title": "MessageResponse",
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        }
+      },
+      "OrderEnum": {
+        "title": "OrderEnum",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "PaginationResponse": {
+        "title": "PaginationResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateEntityResponse"
+            },
+            "description": "array of records"
+          },
+          "prev_page": {
+            "title": "Prev Page",
+            "type": "string",
+            "description": "optional querystring with pagination parameters, null if there is no page"
+          },
+          "next_page": {
+            "title": "Next Page",
+            "type": "string",
+            "description": "optional querystring with pagination parameters, null if there is no page"
+          }
+        }
+      },
+      "StatusEnum": {
+        "title": "StatusEnum",
+        "enum": [
+          "active",
+          "deleted"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "SystemTemplateDataSchema": {
+        "title": "SystemTemplateDataSchema",
+        "required": [
+          "template_name",
+          "available_templates"
+        ],
+        "type": "object",
+        "properties": {
+          "template_name": {
+            "title": "Template Name",
+            "type": "string",
+            "description": "Name of the template"
+          },
+          "available_templates": {
+            "title": "Available Templates",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TemplateDataSchema"
+            },
+            "description": "Array of templates"
+          }
+        }
+      },
+      "TemplateDataSchema": {
+        "title": "TemplateDataSchema",
+        "required": [
+          "language",
+          "subject_template",
+          "body_template"
+        ],
+        "type": "object",
+        "properties": {
+          "language": {
+            "title": "Language",
+            "type": "string",
+            "description": "Lowercase language code [en, de]"
+          },
+          "subject_template": {
+            "title": "Subject Template",
+            "type": "string",
+            "description": "Jinja2 compatible email subject template"
+          },
+          "body_template": {
+            "title": "Body Template",
+            "type": "string",
+            "description": "Jinja2 compatible email body template"
+          }
+        }
+      },
+      "TokenSchemaResponse": {
+        "title": "TokenSchemaResponse",
+        "required": [
+          "token",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "title": "Token",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "VerifyResponse": {
+        "title": "VerifyResponse",
+        "required": [
+          "id",
+          "api_user_id",
+          "domain",
+          "status",
+          "provider"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer",
+            "description": "Entry ID"
+          },
+          "api_user_id": {
+            "title": "Api User Id",
+            "type": "string",
+            "description": "UUID of the API ApiUser",
+            "format": "uuid4"
+          },
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      }
+    }
+  }
+}
