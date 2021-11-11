@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "type": "divider",
+      "title": "INTRODUCTION"
+    },
+    {
       "type": "item",
       "title": "Get started with Monite API",
       "uri": "docs/b.get-started.md"
@@ -11,15 +15,48 @@
       "uri": "docs/d.authentication.md"
     },
     {
+      "type": "divider",
+      "title": "BUSINESS USE CASES"
+    },
+    {
       "type": "item",
-      "title": "Business use case",
+      "title": "How to onboard a partner on Monite",
       "uri": "docs/f.use-case.md"
     },
     {
       "type": "item",
-      "title": "Payable Management",
+      "title": "How to add a new Entity",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "How to manage Roles & Permissions",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "Complete an Entity setup",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "Payable Uploads",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "Processing",
+      "uri": "docs/f.use-case.md"
+    },
+    {
+      "type": "item",
+      "title": "Payments",
       "uri": "docs/g.payable-management.md"
-    },    
+    },
+    {
+      "type": "divider",
+      "title": "REFERENCE"
+    },
     {
       "type": "item",
       "title": "Monite API Glossary",
@@ -29,10 +66,6 @@
       "type": "item",
       "title": "HTTP Methods, Headers, and Statuses",
       "uri": "docs/x.methods-headers-statuses.md"
-    },
-    {
-      "type": "divider",
-      "title": "APIS"
     },
     {
       "type": "item",
