@@ -64,6 +64,11 @@
     },
     {
       "type": "item",
+      "title": "Filtering, Sorting and Pagination",
+      "uri": "docs/y.filterings-sorting-pagination.md"
+    },    
+    {
+      "type": "item",
       "title": "API for Entities",
       "uri": "reference/entities/openapi.json"
     }
