@@ -28,7 +28,7 @@ A payable - as described above can also be uploaded for clearance & payment, by 
 
 the entity allows any of it's users to submit such an expense
 
-Upon a successful upload of a payable, the in built OCR reader starts processing and reads the details from the upload. Once the OCR processing is finished, it maps the right information from the payable to the exact column and displays the final result to the user(s). For example, uploading this [bill example](../assets/images/BillExample.pdf) you may get the following response:
+Upon a successful upload of a payable, the in built OCR reader starts processing and reads the details from the upload. Once the OCR processing is finished, it maps the right information from the payable to the exact column and displays the final result to the user(s). For example, uploading this [bill example](../assets/BillExample.pdf) you may get the following response:
 ```json
 {
     "id": "f53f66ee-8ef8-4319-b70b-fcd8e0a6e07f",
