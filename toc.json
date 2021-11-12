@@ -40,11 +40,6 @@
     },
     {
       "type": "item",
-      "title": "Payable Uploads",
-      "uri": "docs/f.use-case.md"
-    },
-    {
-      "type": "item",
       "title": "Payable Management",
       "uri": "docs/g.payable-management.md"
     },
