@@ -1,3 +1,3 @@
 ## Filtering, Sorting and Pagination
 
-T be described here
+To be described
