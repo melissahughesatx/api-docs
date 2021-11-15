@@ -1,36 +1,56 @@
-## What is a Payable
 
-Payable is defined as any financial document that is given by an entity's supplier itemizing the purchase of a good or a service and demanding payment. A 'Payable' could in the form of either:
+# Manage the payables workflow 
+
+A payable is defined as any financial document that is given by a supplier to an entity. A payable itemizes and demands payment for goods or services. A payable may come in the form of a:
 
 - Bill
 - Incoming invoice
-- Account Payable document
+- Account payable document
 
-Monite's platform provides the flexibility both for the *entity* and the *end users of an entity* to manage a payable. However, based on the type of user accessing the respective APIs, there might be certain restrictions which are imposed and controlled by the permissions. This type of flexibility allows the partner to create a funnel/hierarchy of the users.
+Monite provides flexible payables management for each *entity* and the *end users* who work for that entity. You easily control access to payables based on the role assigned to each end user. This flexibility allows partners to manage workflows easily through the user hierarchy.
 
-### 1. Upload a Payable
+This page explains the payables workflow and shows you how to implement it.
 
-The **Monite Platform** provides the capability to their users to upload any kind of payable, such as a bill, an invoice or an accounts payable document as described above.
+## How it works
 
-**How to upload as an entity**
+The following figure shows the payables workflow:
 
-Using the access token generated for the entity via the `/partner api/api_users/v1/entities/{entity_id}/access` API, the entity can then submit a payable by using the 
+TBD.
 
-`POST /partner-api/entities/v1/payables`. 
 
-This API successfully submits a payable for an entity. 
 
-**How to upload as an end user of an entity**
+## What you need
 
-A payable - as described above can also be uploaded for clearance & payment, by the end user of an entity. For example, an employee submitting their communication expenses for a payment. Using the API
+In order to follow the workflow in this page you need to:
 
-`POST /partner-api/entities_users/v1/payables`
+* Complete the [Get started](b.get-started.md)
+* TBD \<Something to do API calls with> 
 
-the entity allows any of it's users to submit such an expense
+## Implement the payables workflow
 
-Upon a successful upload of a payable, the in built OCR reader starts processing and reads the details from the upload. Once the OCR processing is finished, it maps the right information from the payable to the exact column and displays the final result to the user(s). For example, uploading this [bill example](../assets/BillExample.pdf) you may get the following response:
-```json
-{
+
+TBD: what we really need is a postman collection or such like with this workflow. 
+
+### 1. Upload payables
+
+Monite provides the capability for entities and entity users to easily upload any kind of payable. When the payable is uploaded for clearance and payment, the Monite Optical Character Recognition (OCR) reader processes the details from the uploaded documents. Monite maps the information from the payable to the correct field and sends this information back to the user in the return parameters of the API call.
+
+TBD: is this information storied in a database at the same time?
+
+To upload a payable: 
+
+1. Retrieve an access token for the entity with a call to:
+
+   `GET /partner api/api_users/v1/entities/{entity_id}/access`
+
+2. Submit the payable with a call to:
+   - For an entity:   `POST /partner-api/entities/v1/payables`
+   - For an entity user: `POST /partner-api/entities_users/v1/payables`
+
+   This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/BillExample.pdf) are:
+
+    ```json
+    {
     "id": "f53f66ee-8ef8-4319-b70b-fcd8e0a6e07f",
     "entity_id": "b0ff50d0-cdea-42fd-9461-1b3799b65bcf",
     "status": "unpaid",
@@ -58,43 +78,41 @@ Upon a successful upload of a payable, the in built OCR reader starts processing
         "size": 44709,
         "previews": []
     }
-}
-````
-The field descriptions see [here](ZG9jOjI2OTQ1MjUw-payable-management).
+   }
+   ````
 
-To provide additional control over the uploaded payable, our API platform provides the capability to the user to edit any pre-filled information from OCR and make the final changes before submission
+For more information about these fields, see [payable-management](ZG9jOjI2OTQ1MjUw-payable-management).
 
-### 2. Edit an Uploaded Payable
 
-While a payable has been successfully submitted, there are situations where the submitted information may need to be added/edited. Our platform APIs provide such an option for both our entity end users and the entity itself
+### 2. Edit a payable
 
-**How to edit an upload as an entity**
+There are situations where information submitted in a payable needs to be added to or edited. Once a payable is uploaded, entity and entity users can easily update the information extracted from the payable and make changes before the payable in Monite is submitted.  Monite also enables entities and entity users too edit any section information which has been asked by the finance admin. 
 
-As the entity is the final responsible authority for clearing a payment against the upload, it is of utmost importance to provide the entity with the correct set of tools for the editing them. Using the API
+To edit an update a payable:
 
-`PUT /partner-api/entities/v1/payables/{bill_id}` 
+1. Retrieve the payable from Monite:
 
-allows the entity to edit any information to an already uploaded payable. 
+   TBD: which API do we call here?
 
-**How to edit an upload as an end user of the entity**
+3. Update information in the payable downloaded from Monite.
+4. Publish changes to the payable:
+    - Entity: `PUT /partner-api/entities/v1/payables/{bill_id}`
+    - Entity user: `PUT /partner-api/entities_user/v1/payables/{bill_id}`
+ 
 
-An uploaded payable may need an edit by the end user based on any new information which is available and needs to be submitted. The API
 
-`PUT/partner-api/entities_user/v1/payables/{bill_id}` 
+### 3. View all payables
 
-provides the capability to the end user to edit such an information. This API also allows editing any section information which has been asked by the finance admin to be provided by the end user
+When entity and entity users have uploaded some payables, they can easily view all payables so far uploaded. To allow the right level of access to the authorized users, Monite allows certain type of entity users to view the uploads without allowing the unlimited control over the payable.
 
-### 3. View all Payables
+For example, a member from the Finance team of an entity wants to view all the uploads for record keeping. However to prevent the misuse, the finance team member has restricted access. 
 
-Once the payables have been successfully uploaded either by the entity or the end users of an entity, the Monite's platform provides the option to view all the uploaded payables
+To view all payables, call:
 
-**How to view all the uploads as an entity**
+- entity: `GET /partner-api/entities/v1/payables`
+- entity user:`GET /partner-api/entities_users/v1/payables`
 
-For any kind of financial management of the expenses by the entity, the API
-
-`GET /partner-api/entities/v1/payables` 
-
-provides the capability to access all the payables uploaded, for example:
+Monite returns a paged series of all payables the entity has access to. For example: 
 ```json
 {
     "data": [
@@ -124,44 +142,28 @@ provides the capability to access all the payables uploaded, for example:
 ```
 where data is an array of uploaded paybles and prev_page and next_page are [pagination tokens](y.filterings-sorting-pagination.md).
 
-**How to view all the uploads as a user in the entity**
-
-To allow the right level of access to the authorized users, our platform allows certain type of entity users to view the uploads without allowing the unlimited control over the payable. 
-
-A member from the Finance team of an entity wants to view all the uploads for record keeping. However to prevent the misuse, the finance team member has restricted access. Using the API 
-
-`GET /partner-api/entities_users/v1/payables`
-
-in conjunction with the generated user token displays the results to the finance user based on their assigned restrictions.
-
-The generated access token with the type of API called helps our system identify the user and the type of permissions assigned to such a user. This allows us to display the appropriate amount of information.
-
-### 4. Managing all Payables
+### 4. Manage payables
 
 Upon successfully uploading a payable, the next step involves evaluation, assigning and management of these. With the robustness of our system, we provide a full set of capability for managing these
 
-**Delete an Upload**
+After uploading, payables undergo various approval stages before finally clearing for payment, the approval stages for a payment are: 
 
-Using either the API
-
-`DELETE /partner-api/entities/v1/payables/{payable_id}`, 
-
-the entity can delete any specific upload. This marks the bill as archieved in the system.
-
-The API 
-
-`DELETE/partner-api/entities_users/v1/payables/{payable_id}` 
-
-API allows the users i.e. the financial team members to remove or delete a bill from the system
-
-**Stages after the Upload**
-
-Since the bill after uploading undergoes various approval stages before finally clearing for payment, our platform provides the capabilities to manage the states of an payable using our simple to use API: 
 ![](../assets/images/payable-states.png)
 
-- *Cancel Payable*: If the uploading, the end users realizes he/she made a mistake, the uploaded bill can by cancelled by using `PUT /partner-api/entities/v1/payables/{payable_id}/cancel`API from their system.
+- *Delete an Upload* - monite enables financial team members to remove or delete a bill from the system. The entity can delete any specific upload. This marks the bill as archived in the system.
+
+   - entity : `DELETE /partner-api/entities/v1/payables/{payable_id}`,
+   - entity user: `DELETE/partner-api/entities_users/v1/payables/{payable_id}`
+
+- *Cancel Payable*: when the end users want to stop an upload, cancel by using `PUT /partner-api/entities/v1/payables/{payable_id}/cancel`API from their system.
 - *Assign To Payment*: Once the bill has been uploaded and recognized, its approval for a payments starts with the `PUT /partner-api/entities/v1/payables/{payable_id}/assign_to_payment`API
 - *Confirm Payment*: To finally approve the bill for payment call the `PUT /partner-api/entities/v1/payables/{payable_id}/confirm_payment_operation` API
 - *Reject Payable*: If the approving authority finds any mismatch or discrepancies in the upload, they can simply decline the bill by using the `PUT /partner-api/entities/v1/payables/{payable_id}/decline` API from their system.
 - *Pay*: As soon as the bill/upload has been approved and assigned for payment, you can change its status to "paid" by calling the `PUT /partner-api/entities/v1/payables/{payable_id}/pay` API.
 
+## Reference
+
+For more information about the workflow explained in this page:
+
+- Something
+- Something else
