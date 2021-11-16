@@ -11,7 +11,7 @@
     "image": {
       "rootDir": "assets/images",
       "include": ["**"]
-    }, 
+    },
     "json_schema": {
       "rootDir": "models",
       "include": ["**"]
