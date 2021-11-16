@@ -64,8 +64,18 @@
     },    
     {
       "type": "item",
+      "title": "API for Partners",
+      "uri": "reference/partners/openapi.json"
+    },
+      {
+      "type": "item",
       "title": "API for Entities",
       "uri": "reference/entities/openapi.json"
-    }
+    },
+      {
+      "type": "item",
+      "title": "API for Entity Users",
+      "uri": "reference/entity_users/openapi.json"
+    }    
   ]
 }

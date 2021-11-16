@@ -6,2590 +6,10 @@
   },
   "servers": [
     {
-      "url": "/partner-api/entities"
+      "url": "/partner-api/entity_users"
     }
   ],
   "paths": {
-    "/v1/auth/{entity_user_id}": {
-      "get": {
-        "tags": [
-          "v1 Entity User Tokens"
-        ],
-        "summary": "Check Auth Status",
-        "description": "Check authentication token status",
-        "operationId": "check_auth_status_v1_auth__entity_user_id__get",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "v1 Entity User Tokens"
-        ],
-        "summary": "Obtain New Token",
-        "description": "Obtain a bearer token for further API requests",
-        "operationId": "obtain_new_token_v1_auth__entity_user_id__post",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateTokenResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "v1 Entity User Tokens"
-        ],
-        "summary": "Delete Token",
-        "description": "Remove authentication token (log out)",
-        "operationId": "delete_token_v1_auth__entity_user_id__delete",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/available_permissions": {
-      "get": {
-        "tags": [
-          "v1 Available permissions"
-        ],
-        "summary": "Get All Permissions",
-        "description": "Get all available permissions",
-        "operationId": "get_all_permissions_v1_available_permissions_get",
-        "parameters": [
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/roles": {
-      "post": {
-        "tags": [
-          "v1 Roles"
-        ],
-        "summary": "Create New Role",
-        "description": "Create role",
-        "operationId": "create_new_role_v1_roles_post",
-        "parameters": [
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRoleRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RoleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/roles/{role_id}": {
-      "get": {
-        "tags": [
-          "v1 Roles"
-        ],
-        "summary": "Get Role By Id",
-        "description": "Get role by ID",
-        "operationId": "get_role_by_id_v1_roles__role_id__get",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Role Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "role_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RoleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "v1 Roles"
-        ],
-        "summary": "Update Role By Id",
-        "description": "Update role by ID",
-        "operationId": "update_role_by_id_v1_roles__role_id__put",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Role Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "role_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRoleRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RoleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "v1 Roles"
-        ],
-        "summary": "Delete Role By Id",
-        "description": "Delete role by ID",
-        "operationId": "delete_role_by_id_v1_roles__role_id__delete",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Role Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "role_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/entity_users": {
-      "post": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Create New Entity User",
-        "description": "Add new entity user",
-        "operationId": "create_new_entity_user_v1_entity_users_post",
-        "parameters": [
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateEntityUserRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntityUserResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/entity_users/{entity_user_id}": {
-      "get": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Get Entity User By Id",
-        "description": "Get entity user by id",
-        "operationId": "get_entity_user_by_id_v1_entity_users__entity_user_id__get",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntityUserResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Update Entity User By Id",
-        "description": "Update entity user by id",
-        "operationId": "update_entity_user_by_id_v1_entity_users__entity_user_id__put",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateEntityUserRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntityUserResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Delete Entity User By Id",
-        "description": "Delete entity user",
-        "operationId": "delete_entity_user_by_id_v1_entity_users__entity_user_id__delete",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/entity_users/{entity_user_id}/{role_id}": {
-      "put": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Connect Role To Entity User",
-        "description": "Connect role to entity user",
-        "operationId": "connect_role_to_entity_user_v1_entity_users__entity_user_id___role_id__put",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "required": true,
-            "schema": {
-              "title": "Role Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "role_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntityUserResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/entity_users/{entity_user_id}/userpic": {
-      "post": {
-        "tags": [
-          "v1 Entity Users"
-        ],
-        "summary": "Add Entity User Userpic",
-        "operationId": "add_entity_user_userpic_v1_entity_users__entity_user_id__userpic_post",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Entity User Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "entity_user_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_add_entity_user_userpic_v1_entity_users__entity_user_id__userpic_post"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntityUserResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/export/get_supported_export_formats": {
-      "get": {
-        "tags": [
-          "v1 Export"
-        ],
-        "summary": "Get Supported Export Formats",
-        "operationId": "get_supported_export_formats_v1_export_get_supported_export_formats_get",
-        "parameters": [
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Response Get Supported Export Formats V1 Export Get Supported Export Formats Get",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SupportedFormatSchema"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/export": {
-      "get": {
-        "tags": [
-          "v1 Export"
-        ],
-        "summary": "Get All",
-        "operationId": "get_all_v1_export_get",
-        "parameters": [
-          {
-            "description": "Order by",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/api__v1___shared__pagination_depends__OrderEnum"
-                }
-              ],
-              "description": "Order by",
-              "default": "asc"
-            },
-            "name": "order",
-            "in": "query"
-          },
-          {
-            "description": "Max is 100",
-            "required": false,
-            "schema": {
-              "title": "Limit",
-              "exclusiveMaximum": 101,
-              "exclusiveMinimum": 1,
-              "type": "integer",
-              "description": "Max is 100",
-              "default": 100
-            },
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "description": "A token, obtained from previous page. Prior over other filters",
-            "required": false,
-            "schema": {
-              "title": "Pagination Token",
-              "type": "string",
-              "description": "A token, obtained from previous page. Prior over other filters"
-            },
-            "name": "pagination_token",
-            "in": "query"
-          },
-          {
-            "description": "Allowed cursor fields",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/api__v1__export__pagination__CursorFields"
-                }
-              ],
-              "description": "Allowed cursor fields"
-            },
-            "name": "cursor_field",
-            "in": "query"
-          },
-          {
-            "required": false,
-            "schema": {
-              "title": "Created By Entity User Id",
-              "type": "string",
-              "format": "uuid"
-            },
-            "name": "created_by_entity_user_id",
-            "in": "query"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "v1 Export"
-        ],
-        "summary": "Add Document Export",
-        "operationId": "add_document_export_v1_export_post",
-        "parameters": [
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ExportPayloadSchema"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateExportTaskResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/v1/export/{document_export_id}": {
-      "get": {
-        "tags": [
-          "v1 Export"
-        ],
-        "summary": "Get Document Export By Id",
-        "operationId": "get_document_export_by_id_v1_export__document_export_id__get",
-        "parameters": [
-          {
-            "required": true,
-            "schema": {
-              "title": "Document Export Id",
-              "type": "string",
-              "format": "uuid4"
-            },
-            "name": "document_export_id",
-            "in": "path"
-          },
-          {
-            "description": "standard language header that may be proxied from end-user to our API",
-            "required": false,
-            "schema": {
-              "title": "Accept-Language",
-              "type": "string",
-              "description": "standard language header that may be proxied from end-user to our API"
-            },
-            "name": "Accept-Language",
-            "in": "header"
-          },
-          {
-            "description": "Language header which sent to us by API user",
-            "required": false,
-            "schema": {
-              "title": "X-Accept-Language",
-              "type": "string",
-              "description": "Language header which sent to us by API user"
-            },
-            "name": "X-Accept-Language",
-            "in": "header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DocumentExportResponseSchema"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Biz logic error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "416": {
-            "description": "Requested Range Not Satisfiable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorSchemaResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
     "/v1/todo_tasks/counters": {
       "get": {
         "tags": [
@@ -7375,6 +4795,610 @@
           }
         ]
       }
+    },
+    "/v1/export/get_supported_export_formats": {
+      "get": {
+        "tags": [
+          "v1 Export"
+        ],
+        "summary": "Get Supported Export Formats",
+        "operationId": "get_supported_export_formats_v1_export_get_supported_export_formats_get",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Supported Export Formats V1 Export Get Supported Export Formats Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SupportedFormatSchema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/export": {
+      "get": {
+        "tags": [
+          "v1 Export"
+        ],
+        "summary": "Get All",
+        "operationId": "get_all_v1_export_get",
+        "parameters": [
+          {
+            "description": "Order by",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/api__v1___shared__pagination_depends__OrderEnum"
+                }
+              ],
+              "description": "Order by",
+              "default": "asc"
+            },
+            "name": "order",
+            "in": "query"
+          },
+          {
+            "description": "Max is 100",
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "exclusiveMaximum": 101,
+              "exclusiveMinimum": 1,
+              "type": "integer",
+              "description": "Max is 100",
+              "default": 100
+            },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "description": "A token, obtained from previous page. Prior over other filters",
+            "required": false,
+            "schema": {
+              "title": "Pagination Token",
+              "type": "string",
+              "description": "A token, obtained from previous page. Prior over other filters"
+            },
+            "name": "pagination_token",
+            "in": "query"
+          },
+          {
+            "description": "Allowed cursor fields",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/api__v1__export__pagination__CursorFields"
+                }
+              ],
+              "description": "Allowed cursor fields"
+            },
+            "name": "cursor_field",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Created By Entity User Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": "created_by_entity_user_id",
+            "in": "query"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "v1 Export"
+        ],
+        "summary": "Add Document Export",
+        "operationId": "add_document_export_v1_export_post",
+        "parameters": [
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportPayloadSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateExportTaskResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/v1/export/{document_export_id}": {
+      "get": {
+        "tags": [
+          "v1 Export"
+        ],
+        "summary": "Get Document Export By Id",
+        "operationId": "get_document_export_by_id_v1_export__document_export_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Document Export Id",
+              "type": "string",
+              "format": "uuid4"
+            },
+            "name": "document_export_id",
+            "in": "path"
+          },
+          {
+            "description": "standard language header that may be proxied from end-user to our API",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "description": "standard language header that may be proxied from end-user to our API"
+            },
+            "name": "Accept-Language",
+            "in": "header"
+          },
+          {
+            "description": "Language header which sent to us by API user",
+            "required": false,
+            "schema": {
+              "title": "X-Accept-Language",
+              "type": "string",
+              "description": "Language header which sent to us by API user"
+            },
+            "name": "X-Accept-Language",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentExportResponseSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Biz logic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Requested Range Not Satisfiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorSchemaResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -7425,20 +5449,6 @@
               "$ref": "#/components/schemas/ObjectSchema"
             },
             "description": "List of objects"
-          }
-        }
-      },
-      "Body_add_entity_user_userpic_v1_entity_users__entity_user_id__userpic_post": {
-        "title": "Body_add_entity_user_userpic_v1_entity_users__entity_user_id__userpic_post",
-        "required": [
-          "file"
-        ],
-        "type": "object",
-        "properties": {
-          "file": {
-            "title": "File",
-            "type": "string",
-            "format": "binary"
           }
         }
       },
@@ -7549,41 +5559,6 @@
           }
         }
       },
-      "CreateEntityUserRequest": {
-        "title": "CreateEntityUserRequest",
-        "required": [
-          "login"
-        ],
-        "type": "object",
-        "properties": {
-          "role_id": {
-            "title": "Role Id",
-            "type": "string",
-            "description": "UUID of the role assigned to this entity user",
-            "format": "uuid4"
-          },
-          "login": {
-            "title": "Login",
-            "type": "string",
-            "description": "Email, phone or login"
-          },
-          "first_name": {
-            "title": "First Name",
-            "type": "string",
-            "description": "First name"
-          },
-          "last_name": {
-            "title": "Last Name",
-            "type": "string",
-            "description": "Last name"
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "description": "Title"
-          }
-        }
-      },
       "CreateExportTaskResponseSchema": {
         "title": "CreateExportTaskResponseSchema",
         "required": [
@@ -7595,51 +5570,6 @@
             "title": "Document Export Id",
             "type": "string",
             "format": "uuid4"
-          }
-        }
-      },
-      "CreateRoleRequest": {
-        "title": "CreateRoleRequest",
-        "required": [
-          "name",
-          "permissions"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "title": "Name",
-            "type": "string",
-            "description": "Role name"
-          },
-          "permissions": {
-            "title": "Permissions",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BizObjectsSchema"
-              }
-            ],
-            "description": "Access permissions"
-          }
-        }
-      },
-      "CreateTokenResponse": {
-        "title": "CreateTokenResponse",
-        "required": [
-          "token",
-          "expiration_in"
-        ],
-        "type": "object",
-        "properties": {
-          "token": {
-            "title": "Token",
-            "type": "string",
-            "description": "Bearer token for further API calls"
-          },
-          "expiration_in": {
-            "title": "Expiration In",
-            "type": "string",
-            "description": "TC datetime or INT with seconds. Expiration timeout should be configured from configuration files",
-            "format": "date-time"
           }
         }
       },
