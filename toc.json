@@ -61,7 +61,11 @@
       "type": "item",
       "title": "Filtering, Sorting and Pagination",
       "uri": "docs/y.filtering-sorting-pagination.md"
-    },    
+    },
+    {
+      "type": "divider",
+      "title": "APIs"
+    },      
     {
       "type": "item",
       "title": "API for Partners",
