@@ -47,7 +47,7 @@ To upload a payable:
    - For an entity:   `POST /partner-api/entities/v1/payables`
    - For an entity user: `POST /partner-api/entities_users/v1/payables`
 
-   This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/BillExample.pdf) are:
+   This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/images/BillExample.pdf) are:
 
     ```json
     {
