@@ -81,7 +81,7 @@ To upload a payable:
    }
    ````
 
-For more information about these fields, see [payable-management](ZG9jOjI2OTQ1MjUw-payable-management).
+For more information about these fields, see [payable schema](c2NoOjI3NzgxOTUx-payable-response-schema).
 
 
 ### 2. Edit a payable
