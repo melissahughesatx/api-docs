@@ -47,13 +47,13 @@ To upload a payable:
    - For an entity:   `POST /partner-api/entities/v1/payables`
    - For an entity user: `POST /partner-api/entities_users/v1/payables`
 
-   This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/images/BillExample.pdf) are:
+   This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/images/BillExample.jpg) are:
 
-    ```json
-    {
-    "id": "f53f66ee-8ef8-4319-b70b-fcd8e0a6e07f",
+```json
+{
+    "id": "c38552fe-3a20-47cf-baff-646d7107cfd8",
     "entity_id": "b0ff50d0-cdea-42fd-9461-1b3799b65bcf",
-    "status": "unpaid",
+    "status": "new",
     "source_of_payable_data": "ocr",
     "currency": "EUR",
     "amount": 11900,
@@ -62,24 +62,24 @@ To upload a payable:
     "issued_at": "2021-11-11",
     "counterpart_bank_id": null,
     "counterpart_account_id": null,
-    "counterpart_name": "B'H From SupplierName",
+    "counterpart_name": "SupplierName",
     "payable_origin": "upload",
     "was_created_by_external_user_name": null,
     "was_created_by_external_user_id": null,
-    "created_at": "2021-11-11T13:56:07.599476+00:00",
-    "updated_at": "2021-11-11T13:56:07.599504+00:00",
+    "created_at": "2021-11-17T15:05:54.631508+00:00",
+    "updated_at": "2021-11-17T15:05:54.631524+00:00",
     "file": {
         "file_type": "ocr-files",
         "name": "file",
         "region": "eu-central-1",
-        "md5": "46fe13c68e54629acd06aa9f561d366a",
-        "mimetype": "application/pdf",
-        "url": "https://monite-ocr-files-eu-central-1-develop.s3.amazonaws.com/cd32009c-57bd-4789-98ae-c1b25cf8636a/8f697e99-e6e2-48cf-a458-ba7b7319acb5",
-        "size": 44709,
+        "md5": "027736d1a331d7a1d4085051ed07ee3e",
+        "mimetype": "image/jpeg",
+        "url": "https://monite-ocr-files-eu-central-1-develop.s3.amazonaws.com/4a8c2058-1c5b-449d-96b5-bf117ec864bb/f8679381-a929-461e-b4a2-ceed059e8ab2",
+        "size": 246331,
         "previews": []
     }
-   }
-   ````
+}
+````
 
 For more information about these fields, see [payable schema](c2NoOjI3NzgxOTUx-payable-response-schema).
 
