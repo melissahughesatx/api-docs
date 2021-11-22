@@ -22,11 +22,11 @@ Learn the significance of terminology commonly used in the documentation.
  - An end-user of partner's application connected to Monite API. In the majority of cases this resembles an entity's employee.
  - The following terms might be used as synonyms and help your understanding: entity-user. 
 #### Approval policy
-  - A single set of Rules and Conditions that was dedicated for user-defined purpose.
+  - A single set of [Rules](@rule) and [Conditions](@condition) that was dedicated for user-defined purpose.
   - The following terms might be used as synonyms and help your understanding: Workflow / Approval flow / Spending policy
 #### Condition
-  - A setting that determines the situation for which an Approval policy should be applied.
+  - A setting that determines the situation for which an [Approval policy](@approval policy) should be applied.
 #### Rule
-  - A setting that defines what users should approve a submitted payable document in a set range of amounts.
+  - A setting that defines the users who have the rights to approve a submitted payable that contains figures in a specific range.
 #### Approval permissions
-  - An authority of user in the Approval policy.
+  - Rights of the user to validate [payables](@payable) entered into the system.
