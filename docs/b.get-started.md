@@ -11,7 +11,9 @@ This section shows you how to create the [authentication tokens](d.authenticatio
 
 The following figure shows the API callflow to start managing expenses for your customers. 
 
-![](../assets/images/monite-workflow.png)
+![How-to.png](https://stoplight.io/api/v1/projects/cHJqOjkzMDU5/images/pU1fL82z3u0)
+
+
 
 
 ## What you need
