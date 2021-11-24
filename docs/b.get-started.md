@@ -1,7 +1,7 @@
 
 # Get started with Monite API
 
-Monite offers the following roles:
+Monite offers the following access modes:
 
 - Partner - a person who implements Monite in their SASS tool
 - Entity - the customer of a partner
@@ -9,7 +9,7 @@ Monite offers the following roles:
 
 All calls to Monite are totally secure, they require an access token to succeed. The information in the token tells Monite the role assigned to the person making the API call. After a Partner contacts Monite, they retrieve access tokens and use the API to set up a space for each entity in Monite.
 
-This section shows you how to create the [authentication tokens](d.authentication.md) and entities that are the first step for all development solutions. 
+This section shows you how to retrieve the [authentication tokens](d.authentication.md) and entities that are the first step for all development solutions. 
 
 ## How it works
 
@@ -44,7 +44,7 @@ In order to create your first Monite app you need to:
 
     For an authenticated account, Monite returns `200 OK` and you continue this workflow. 
 
-3. **Retrieve a new API token**
+3. **Retrieve a partner token**
 
     Call `POST https://api.dev.monite.dev/partner-api/api_users/v1/auth` with the API `user_id` and `secret` supplied with your Monite account. 
     ````curl

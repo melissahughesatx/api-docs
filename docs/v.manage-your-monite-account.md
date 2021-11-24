@@ -3,7 +3,7 @@
 
 Monite is a SAAS that your backend securely sends and retrieves financial data to and from using a series of REST calls. In order to make authenticated REST calls to Monite, you need to create and manage your Monite account and API credentials. 
 
-This page shows you how to setup your account and retrieve credentials.
+This page shows you how to set up your account and retrieve credentials.
 
 ## How it works
 
@@ -27,7 +27,7 @@ In order to create a secure Monite account:
 
 ## Retrieve your Monite credentials
 
-To retreive the credentials you use for all REST to Monite:
+To retrieve the credentials you use for all REST to Monite:
 
 1. Do this.
 1. Do that.
