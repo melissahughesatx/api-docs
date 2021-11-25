@@ -7,7 +7,7 @@ A payable is defined as any financial document that is given by a supplier to an
 - Incoming invoice
 - Account payable document
 
-Monite provides flexible payables management for each *entity* and the *end users* who work for that entity. You easily control access to payables based on the role assigned to each end user. This flexibility allows partners to manage workflows easily through the user hierarchy.
+Monite provides flexible payables' management for each *entity* and the *end users* who work for that entity. You easily control access to payables based on the role assigned to each end user. This flexibility allows partners to manage workflows easily through the user hierarchy.
 
 This page explains the payables workflow and shows you how to implement it.
 
@@ -105,7 +105,7 @@ To edit an update a payable:
 
 When entity and entity users have uploaded some payables, they can easily view all payables so far uploaded. To allow the right level of access to the authorized users, Monite allows certain type of entity users to view the uploads without allowing the unlimited control over the payable.
 
-For example, a member from the Finance team of an entity wants to view all the uploads for record keeping. However to prevent the misuse, the finance team member has restricted access. 
+For example, a member from the Finance team of an entity wants to view all the uploads for record keeping. However, to prevent the misuse, the finance team member has restricted access. 
 
 To view all payables, call:
 
@@ -140,7 +140,7 @@ Monite returns a paged series of all payables the entity has access to. For exam
     "next_page": "/partner-api/entities/v1/payables?pagination_token=Zmlyc3Rfb2lkPTEmbmV4dF90b2tlbj0y"
 }
 ```
-where data is an array of uploaded paybles and prev_page and next_page are [pagination tokens](y.filterings-sorting-pagination.md).
+where data is an array of uploaded payables and prev_page and next_page are [pagination tokens](y.filterings-sorting-pagination.md).
 
 ### 4. Manage payables
 
