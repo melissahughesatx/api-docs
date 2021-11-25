@@ -185,6 +185,10 @@ Depending on [payable status](#how-it-works) you may fulfil different operation 
 
    - entity : `DELETE /partner-api/entities/v1/payables/{payable_id}`,
    - entity user: `DELETE/partner-api/entities_users/v1/payables/{payable_id}`
+```curl
+curl --location --request DELETE 'https://api.dev.monite.dev/partner-api/entities/v1/payables/aa314fdd-a763-4920-a8c8-6285fc1745c0' \
+--header 'x-api-key: en-your0000-enti-ty00-leve-access0token'
+```
 
 - *Cancel Payable*: when the end users want to stop an upload, cancel by using `PUT /partner-api/entities/v1/payables/{payable_id}/cancel`API from their system:
 ```curl
@@ -215,7 +219,7 @@ curl --location --request PUT 'https://api.dev.monite.dev/partner-api/entities/v
 ```
 Successful response 200 OK contains updated paybable's status:
 `"status": "rejected"`
-- *Pay*: Finally, As soon as the bill/upload has been approved and assigned for payment, you can change its status to "paid" by calling the `PUT /partner-api/entities/v1/payables/{payable_id}/pay` API:
+- *Pay*: Finally, as soon as the bill/upload has been approved and assigned for payment, you can change its status to "paid" by calling the `PUT /partner-api/entities/v1/payables/{payable_id}/pay` API:
 ```curl
 curl --location --request PUT 'https://api.dev.monite.dev/partner-api/entities/v1/payables/aa314fdd-a763-4920-a8c8-6285fc1745c0/pay' \
 --header 'x-api-key: en-your0000-enti-ty00-leve-access0token'
