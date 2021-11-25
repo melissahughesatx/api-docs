@@ -49,8 +49,13 @@
     },
     {
       "type": "item",
-      "title": "Monite API Glossary ",
+      "title": "Monite API Glossary",
       "uri": "docs/w.glossary.md"
+    },
+    {
+      "type": "item",
+      "title": "Manage your Monite account",
+      "uri": "docs/v.manage-your-monite-account.md"
     },
     {
       "type": "item",
