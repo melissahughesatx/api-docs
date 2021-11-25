@@ -20,8 +20,8 @@ The following figure shows the API callflow to start managing expenses for your 
 
 To successfully understand and complete this task you must have the following:
 
-- A valid Monite account.
-- A monite key/value pair.
+- A valid Monite account
+- A monite key/value pair
 
 ## Implement your first Monite app
 
