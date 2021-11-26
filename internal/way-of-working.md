@@ -125,6 +125,18 @@ Though there is a possibility to reconfigure this default structure (see https:/
     - b.get-started.md
 	- c.glossary.md
 
+## How to update endpoint data
+Now editing of endpoint descriptions is only possible. Editing of the objects listed below wil be possible in the future:
+a) endpoint's summary field
+b) endpoint parameter's name
+c) endpoint parameter's description
+d) (successful and error) response's descriptions
+
+To edit an endpoint description, a TW should
+1. choose the correct folder from https://gitlab.com/monite/backend/api-descriptions/-/tree/master/api_descriptions/texts The name of the folder matches the name of a business object the endpoint belongs to. In this repo there is no separation of endpoints between different access modes (partner/entity/entity-user), all business objects are located in the same folder.
+2. In the selected folder open the file descriptions.py and find there a constant with a value in double quotes which coincides with the current endpoint description. Current version is accessible from https://api.dev.monite.dev/partner-api/docs
+3. Modify this value in a new branch in Gitlab. Create Merge Request, assign Ivan Rykov as a reviewer.
+
 # Definition of ready
 
 To work efficiently, each ticket should have:
