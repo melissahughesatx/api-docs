@@ -138,7 +138,7 @@ Monite returns a paged series of all payables the entity has access to. For exam
     "next_page": "/partner-api/entities/v1/payables?pagination_token=Zmlyc3Rfb2lkPTEmbmV4dF90b2tlbj0y"
 }
 ```
-`data` is an array of uploaded payables. `prev_page` and `next_page` are [pagination tokens](y.filterings-sorting-pagination.md).
+`data` is an array of uploaded payables. `prev_page` and `next_page` are [pagination tokens](y.filtering-sorting-pagination.md).
 
 ### 3. Edit a payable
 
