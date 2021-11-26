@@ -5,7 +5,7 @@ API consumer may affect what and how data is returned on their requests by using
 - filtering
 
 ## Pagination
-Pagination is a process of dividing resulting set of data into discrete blocks of information (pages). It decreases both server payload and network traffic, and increases the speed of page loading. For example, in Monite you may have 1000 Payables registered and want receive them by groups of 1-100, where 100 is the maximum of documents that can be requested at 1 time.
+Pagination is a process of dividing resulting set of data into discrete blocks of information (pages). It decreases both server payload and network traffic, and increases the speed of page loading. For example, in Monite you may have 1000 Payables registered and want to receive them by groups of 1-100, where 100 is the maximum of documents that can be requested at 1 time.
 
 ### Pagination cursor field
 For pagination to work, one field (column) in the database table must be selected as a pagination cursor field. By default, the pagination cursor uses `created_at` field. Every database table has such a field, so no need to specify it explicitly, unlike other cursor fields. Allowed pagination options for the cursor fields are defined for each endpoint independently, see details in [swagger specifications](YXBpOjI1NjU5MjUw-api-for-entities).
@@ -13,7 +13,7 @@ For pagination to work, one field (column) in the database table must be selecte
 Pagination can be based on just one cursor field and this field cannot be changed during the pagination process. Let's say we have a table with `id`, `first_name`, `last_name`, `email, phone`, `created_at` fields. If the pagination is initiated with the `first_name` field, API consumer won't be allowed to modify the cursor field in/for the second page. 
 
 ### Page size (limit)
-To avoid server and network overloading, the number of returned records in GET requests are restricted. In API requests the `limit` query parameter defines the number of records that API consumer want to receive in response. The miminum value is 1, the maximum is 100. Beyond this scope a HTTP error 416 (Requested range not satisfiable) is raised.
+To avoid server and network overloading, the number of returned records in GET requests are restricted. In API requests the `limit` query parameter defines the number of records that API consumer want to receive in response. The miminum value is 1, the maximum is 100. Beyond this scope, an HTTP error 416 (Requested range not satisfiable) is raised.
 
 ## Sorting
 As well as selecting a pagination cursor field, an API consumer may define the order in which selected records are sorted: ascendant or descendant. This order is defined by a `query` parameter of API request. The parameter may accept one of two values: `asc` (ascending) and `desc` (descending). The `asc` value is used by default.
@@ -53,7 +53,7 @@ If the data is selected based on the specified conditions, the response will loo
     "next_page": "/entity_users/v1/reconciliation?pagination_token=bGltaXQ9MiZmaXJzdF9vaWQ9MSZuZXh0X3Rva2VuPTQ="
 }
 ``` 
-where links specified in `prev_page` and `next_page` attributes can be used to retrive the previous of next page in the result set.
+where links specified in `prev_page` and `next_page` attributes can be used to retrieve the previous or next page in the result set.
 
 ## Pagination error codes
 
