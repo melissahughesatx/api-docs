@@ -38,7 +38,7 @@ To upload a payable:
 
 1. Use the partner-level access token retrieve an entity access token with a call to `GET /partner api/api_users/v1/entities/{entity_id}/access`:
     ```curl
-    curl --location --request POST 'https://api.dev.monite.dev/partner-api/api_users/v1/entities/au-your0000-part-ner0-leve-access0token/access' \
+    curl --location --request POST 'https://api.dev.monite.dev/partner-api/api_users/v1/entities/au-your0000-3nt-1tty-idlkj-mycompany/access' \
       --header 'x-api-key: au-your0000-part-ner0-leve-access0token'
     ```
     The successful response code 200 OK contains the entity token:
@@ -179,15 +179,6 @@ After uploading, payables undergo the following approval stages before clearing 
 - `waiting_to_be_paid` 
 
 Depending on [payable status](#how-it-works) you need to implement the following stages:
-
-- **Delete a payable** - Monite enables financial team members to remove or delete a bill from the system. The entity can delete any specific upload. This marks the bill as archived in the system.
-
-   - entity : `DELETE /partner-api/entities/v1/payables/{payable_id}`,
-   - entity user: `DELETE/partner-api/entities_users/v1/payables/{payable_id}`
-    ```curl
-    curl --location --request DELETE 'https://api.dev.monite.dev/partner-api/entities/v1/payables/aa314fdd-a763-4920-a8c8-6285fc1745c0' \
-    --header 'x-api-key: en-your0000-enti-ty00-leve-access0token'
-    ```
 
 - **Cancel a payable**: when the end users want to stop an upload, you cancel it with a call to `PUT /partner-api/entities/v1/payables/{payable_id}/cancel`:
     ```curl
