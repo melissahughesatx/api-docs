@@ -60,6 +60,12 @@ To upload a payable:
     ```
     This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/images/BillExample.jpg) are:
     
+[stuff](assets/images/BillExample.jpg)
+[stuffs](../assets/images/BillExample.jpg)
+[stuffs](./assets/images/BillExample.jpg)
+
+
+    
     ```json
     {
         "id": "aa314fdd-a763-4920-a8c8-6285fc1745c0",
