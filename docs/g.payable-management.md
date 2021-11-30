@@ -60,7 +60,7 @@ To upload a payable:
     ```
     This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](../assets/images/BillExample.jpg) are:
     
-[stuff](assets/images/BillExample.jpg)
+[stuff](/assets/images/BillExample.jpg)
 [stuffs](../assets/images/BillExample.jpg)
 [stuffs](./assets/images/BillExample.jpg)
 
