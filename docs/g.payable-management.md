@@ -58,11 +58,11 @@ To upload a payable:
     --header 'x-api-key: en-your0000-enti-ty00-leve-access0token' \
     --form 'file=@"BillExample.jpg"'
     ```
-    This call submits and analyses the payable uploaded. For example, the return parameters when you upload the ![bill example](../assets/images/BillExample.jpg) are:
+    This call submits and analyses the payable uploaded. For example, the return parameters when you upload the [bill example](.../assets/images/BillExample.jpg) are:
     
-![stuff](/assets/images/BillExample.jpg)
-![stuffs](../assets/images/BillExample.jpg)
-![stuffs](./assets/images/BillExample.jpg)
+[stuff](/assets/images/BillExample.jpg)
+[stuffs](../assets/images/BillExample.jpg)
+[stuffs](./assets/images/BillExample.jpg)
 
 
     
